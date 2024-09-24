@@ -1,35 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Links</title>
-    <style>
-        body {
-            background-color:pale pink;
-            color: #333; 
-            font-family: Arial, sans-serif;
-        }
-        ul {
-            list-style-type: none; 
-            padding: 0; 
-        }
-        li {
-            margin: 10px 0; 
-        }
-        a {
-            text-decoration: none; 
-            color: #1e90ff; 
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+<title>page title</title>
 </head>
 <body>
-    <h1>Welcome to index page</h1>
-    <ol>
-        <!-- Add more links as needed -->
-    </ol>
-</body>
-</html>
+<h1>full stack web devolopement lab</h1>
+<h2>myportfolio</h2>
+<a href=
