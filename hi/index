@@ -1,15 +1,1 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>page title</title>
-</head>
-<body>
-<h1>full stack web devolopement lab</h1>
-<h2>myportfolio</h2>
-<a href="portfolio.html">my portfolio</a><br>
-<h3>todolist</h3>
-<a href="todolist.html">todolist</a>
-<h4>microblog</h4>
-<a href="microblog.html">microblog</a>
-</body>
-  </html>
+
