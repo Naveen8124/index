@@ -1,1 +1,1 @@
-https://naveen8124.github.io/index.html/
+https://naveen8124.github.io/index/
