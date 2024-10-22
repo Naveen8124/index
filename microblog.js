@@ -1,18 +1,16 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const postForm = document.getElementById("postForm");
     const messageInput = document.getElementById("message");
+    const imageUpload = document.getElementById("imageUpload");
     const postsContainer = document.getElementById("posts");
 
-    postForm.addEventListener("submit", function(event) {
-        event.preventDefault(); // Prevent the form from submitting traditionally
+    postForm.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent form submission
 
         const message = messageInput.value.trim();
-        const fileInput = document.createElement("input");
-        fileInput.type = "file";
-        fileInput.accept = "image/*";
-        fileInput.onchange = handleFileUpload;
+        const file = imageUpload.files[0];
 
-        if (message || fileInput.files.length) {
+        if (message || file) {
             const postElement = document.createElement("div");
             postElement.classList.add("post");
             postElement.innerHTML = `
@@ -31,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             postsContainer.prepend(postElement);
             messageInput.value = ""; // Clear the message input
+            imageUpload.value = ""; // Clear the file input
 
             const likeButton = postElement.querySelector(".like");
             const dislikeButton = postElement.querySelector(".dislike");
@@ -39,15 +38,25 @@ document.addEventListener("DOMContentLoaded", function() {
             const commentsContainer = postElement.querySelector(".comments");
             const imgElement = postElement.querySelector(".uploaded-image");
 
-            likeButton.addEventListener("click", function() {
+            // Handle image upload
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    imgElement.src = e.target.result;
+                    imgElement.style.display = "block"; // Show the image
+                };
+                reader.readAsDataURL(file);
+            }
+
+            likeButton.addEventListener("click", function () {
                 alert("Liked!");
             });
 
-            dislikeButton.addEventListener("click", function() {
+            dislikeButton.addEventListener("click", function () {
                 alert("Disliked!");
             });
 
-            commentButton.addEventListener("click", function() {
+            commentButton.addEventListener("click", function () {
                 const comment = commentInput.value.trim();
                 if (comment) {
                     const commentElement = document.createElement("p");
@@ -56,21 +65,24 @@ document.addEventListener("DOMContentLoaded", function() {
                     commentInput.value = ""; // Clear the comment input
                 }
             });
-
-            // Handle image upload
-            function handleFileUpload(event) {
-                const file = event.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        imgElement.src = e.target.result;
-                        imgElement.style.display = "block"; // Show the image
-                    };
-                    reader.readAsDataURL(file);
-                }
-            }
-
-            fileInput.click(); // Trigger the file input
         }
     });
+
+    // Login functionality
+    const loginForm = document.getElementById("loginForm");
+    if (loginForm) {
+        loginForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Simple login check (you can replace this with a real authentication process)
+            if (username === "user" && password === "password") {
+                alert("Login successful!");
+                window.location.href = "index.html"; // Redirect to the main page
+            } else {
+                alert("Invalid username or password.");
+            }
+        });
+    }
 });
