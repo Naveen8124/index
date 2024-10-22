@@ -105,3 +105,29 @@ button:hover {
     width: 60px;
     padding: 5px;
 }
+/* Animation for uploaded images */
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Styles for liked and disliked buttons */
+.liked {
+    background-color: #28a745; /* Green color */
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.disliked {
+    background-color: #dc3545; /* Red color */
+    color: white;
+    transition: background-color 0.3s;
+}
