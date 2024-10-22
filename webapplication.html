@@ -20,12 +20,20 @@
     <main>
         <h2>Available Products</h2>
         <div id="productList">
-            <!-- Product listings will be dynamically inserted here -->
+            <!-- Example product listing -->
             <div class="product">
                 <h3>Example Product Title</h3>
                 <p>Description of the product goes here.</p>
-                <p>Price: $100</p>
-                <button onclick="window.location.href='product-detail.html'">View Details</button>
+                <p>Price: <span class="price">$100</span></p>
+                <img src="path/to/image.jpg" alt="Product Image" class="product-image" />
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="like">Like</button> <span class="like-count">0</span>
+                <button class="dislike">Dislike</button> <span class="dislike-count">0</span>
+                <div class="comment-section">
+                    <input type="text" placeholder="Add a comment...">
+                    <button class="add-comment">Comment</button>
+                </div>
+                <div class="comments"></div>
             </div>
             <!-- More products can be added here -->
         </div>
