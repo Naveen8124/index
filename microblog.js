@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 reader.onload = function (e) {
                     imgElement.src = e.target.result;
                     imgElement.style.display = "block"; // Show the image
+                    imgElement.classList.add("fade-in"); // Add animation class
                 };
                 reader.readAsDataURL(file);
             }
@@ -56,13 +57,15 @@ document.addEventListener("DOMContentLoaded", function () {
             likeButton.addEventListener("click", function () {
                 likes++;
                 likeCount.innerText = likes; // Update like count
-                alert("Liked!");
+                likeButton.classList.add("liked"); // Add liked class for animation
+                alert("You liked this post!");
             });
 
             dislikeButton.addEventListener("click", function () {
                 dislikes++;
                 dislikeCount.innerText = dislikes; // Update dislike count
-                alert("Disliked!");
+                dislikeButton.classList.add("disliked"); // Add disliked class for animation
+                alert("You disliked this post!");
             });
 
             commentButton.addEventListener("click", function () {
@@ -85,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
 
-            // Simple login check (you can replace this with a real authentication process)
+            // Simple login check
             if (username === "user" && password === "password") {
                 alert("Login successful!");
                 window.location.href = "index.html"; // Redirect to the main page
