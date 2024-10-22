@@ -17,8 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 <p>${message}</p>
                 <img class="uploaded-image" style="display:none" />
                 <div class="actions">
-                    <button class="like">Like</button>
-                    <button class="dislike">Dislike</button>
+                    <button class="like">Like</button> <span class="like-count">0</span>
+                    <button class="dislike">Dislike</button> <span class="dislike-count">0</span>
                 </div>
                 <div class="comment-section">
                     <input type="text" placeholder="Add a comment...">
@@ -33,6 +33,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const likeButton = postElement.querySelector(".like");
             const dislikeButton = postElement.querySelector(".dislike");
+            const likeCount = postElement.querySelector(".like-count");
+            const dislikeCount = postElement.querySelector(".dislike-count");
             const commentInput = postElement.querySelector("input[type='text']");
             const commentButton = postElement.querySelector(".add-comment");
             const commentsContainer = postElement.querySelector(".comments");
@@ -48,11 +50,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 reader.readAsDataURL(file);
             }
 
+            let likes = 0;
+            let dislikes = 0;
+
             likeButton.addEventListener("click", function () {
+                likes++;
+                likeCount.innerText = likes; // Update like count
                 alert("Liked!");
             });
 
             dislikeButton.addEventListener("click", function () {
+                dislikes++;
+                dislikeCount.innerText = dislikes; // Update dislike count
                 alert("Disliked!");
             });
 
