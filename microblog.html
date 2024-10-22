@@ -4,94 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Microblog</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
-        }
-        .post {
-            background: white;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
-        .post-actions {
-            margin-top: 10px;
-        }
-        .comment {
-            margin-top: 5px;
-            padding: 5px;
-            border-left: 2px solid #007BFF;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-<h1>Microblog</h1>
-
-<div id="posts-container"></div>
-
-<h2>Create a Post</h2>
-<input type="text" id="username" placeholder="Your Username">
-<textarea id="content" placeholder="What's on your mind?" rows="4" style="width: 100%;"></textarea>
-<button onclick="createPost()">Post</button>
-
-<script>
-    const postsContainer = document.getElementById('posts-container');
-
-    function createPost() {
-        const username = document.getElementById('username').value;
-        const content = document.getElementById('content').value;
-
-        if (username && content) {
-            const post = document.createElement('div');
-            post.className = 'post';
-
-            post.innerHTML = `
-                <strong>${username}</strong>
-                <p>${content}</p>
-                <div class="post-actions">
-                    <button onclick="likePost(this)">Like (0)</button>
-                    <button onclick="sharePost('${content}')">Share</button>
-                    <input type="text" placeholder="Add a comment" onkeypress="if(event.key === 'Enter'){ addComment(this, '${username}'); }">
-                </div>
-                <div class="comments"></div>
-            `;
-
-            postsContainer.prepend(post);
-
-            // Clear input fields
-            document.getElementById('username').value = '';
-            document.getElementById('content').value = '';
-        } else {
-            alert('Please enter a username and content.');
-        }
-    }
-
-    function likePost(button) {
-        const likesText = button.innerHTML.match(/(\d+)/)[0];
-        const newLikes = parseInt(likesText) + 1;
-        button.innerHTML = Like (${newLikes});
-    } 
-
-    function sharePost(content) {
-        alert(Check out this post: ${content});
-    }
-
-    function addComment(input, username) {
-        const commentText = input.value;
-        if (commentText) {
-            const commentDiv = document.createElement('div');
-            commentDiv.className = 'comment';
-            commentDiv.innerHTML = <strong>${username}</strong>: ${commentText};
-
-            input.parentElement.nextElementSibling.appendChild(commentDiv);
-            input.value = ''; // Clear the input
-        }
-    }
-</script>
-
+    <div class="container">
+        <h1>Microblog</h1>
+        <form id="postForm">
+            <textarea id="message" placeholder="What's on your mind?" rows="4"></textarea>
+            <button type="submit">Post</button>
+        </form>
+        <div id="posts">
+            <!-- Posts will appear here -->
+        </div>
+    </div>
+    <script src="scripts.js"></script>
 </body>
 </html>
