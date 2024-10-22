@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Classifieds - Buy & Sell</title>
     <link rel="stylesheet" href="webapplication.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <header>
@@ -20,18 +21,18 @@
 
     <main>
         <h2>Available Products</h2>
-        <input type="text" id="search" placeholder="Search products..." />
+        <input type="text" id="search" placeholder="Search products..." onkeyup="filterProducts()" />
 
         <div id="productList">
             <!-- Example product listing -->
             <div class="product">
                 <h3>RX100</h3>
-                <p> 1995 Production.</p>
+                <p>1995 Production.</p>
                 <p>Price: <span class="price">₹85,000</span></p>
                 <img src="image.jpg" alt="Product Image" class="product-image" />
                 <button class="add-to-cart">Add to Cart</button>
-                <button class="like">Like</button> <span class="like-count">0</span>
-                <button class="dislike">Dislike</button> <span class="dislike-count">0</span>
+                <button class="like"><i class="fas fa-thumbs-up"></i> Like</button> <span class="like-count">0</span>
+                <button class="dislike"><i class="fas fa-thumbs-down"></i> Dislike</button> <span class="dislike-count">0</span>
                 <div class="comment-section">
                     <input type="text" placeholder="Add a comment...">
                     <button class="add-comment">Comment</button>
