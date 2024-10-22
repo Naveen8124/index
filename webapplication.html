@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classifieds - Buy & Sell</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Classifieds</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <a href="create-listing.html">Create Listing</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Available Products</h2>
+        <div id="productList">
+            <!-- Product listings will be dynamically inserted here -->
+            <div class="product">
+                <h3>Example Product Title</h3>
+                <p>Description of the product goes here.</p>
+                <p>Price: $100</p>
+                <button onclick="window.location.href='product-detail.html'">View Details</button>
+            </div>
+            <!-- More products can be added here -->
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Classifieds. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
