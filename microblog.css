@@ -33,6 +33,10 @@ textarea {
     margin-bottom: 10px;
 }
 
+input[type="file"] {
+    margin-bottom: 10px;
+}
+
 button {
     padding: 10px;
     border: none;
@@ -57,4 +61,29 @@ button:hover {
 .post p {
     margin: 0;
     color: #555;
+}
+
+.post img {
+    max-width: 100%;
+    border-radius: 4px;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.comment-section {
+    margin-top: 10px;
+}
+
+.comment-section input {
+    width: calc(100% - 70px);
+    padding: 5px;
+}
+
+.comment-section button {
+    width: 60px;
+    padding: 5px;
 }
