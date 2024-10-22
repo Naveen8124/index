@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function addToCart(event) {
         const itemElement = event.target.closest('.item');
         const itemName = itemElement.querySelector('h2').innerText;
-        const itemPrice = parseFloat(itemElement.querySelector('.price').innerText.replace('₹', '₹'));
+        const itemPrice = parseFloat(itemElement.querySelector('.price').innerText.replace('₹', ''));
 
         // Create a new list item for the cart
         const listItem = document.createElement('li');
