@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Create a new list item for the cart
         const listItem = document.createElement('li');
-        listItem.innerText = `₹{itemName} - ₹{itemPrice}`;
+        listItem.innerText = `${itemName} - ₹${itemPrice}`;
         cartItems.appendChild(listItem);
 
         // Update total
