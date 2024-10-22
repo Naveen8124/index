@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
@@ -16,10 +16,23 @@ nav a {
     color: white;
     margin: 0 15px;
     text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #ffdd57; /* Hover color */
 }
 
 main {
     padding: 20px;
+}
+
+input#search {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .product {
@@ -27,7 +40,12 @@ main {
     border-radius: 5px;
     padding: 15px;
     margin: 10px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.product:hover {
+    transform: scale(1.02); /* Slight scale on hover */
 }
 
 .product-image {
@@ -43,6 +61,8 @@ main {
 .comment-section input {
     width: calc(100% - 70px);
     padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .comment-section button {
