@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const products = document.querySelectorAll(".product");
+    const searchInput = document.getElementById("search");
 
     products.forEach(product => {
         let likes = 0;
@@ -39,6 +40,19 @@ document.addEventListener("DOMContentLoaded", function () {
         addToCartButton.addEventListener("click", function () {
             alert("Added to cart!");
             // Here you can implement cart logic
+        });
+    });
+
+    // Search functionality
+    searchInput.addEventListener("input", function () {
+        const filter = searchInput.value.toLowerCase();
+        products.forEach(product => {
+            const title = product.querySelector("h3").innerText.toLowerCase();
+            if (title.includes(filter)) {
+                product.style.display = ""; // Show
+            } else {
+                product.style.display = "none"; // Hide
+            }
         });
     });
 });
