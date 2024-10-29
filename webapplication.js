@@ -1,63 +1,112 @@
-document.querySelectorAll('.add-to-cart').forEach(button => {
-    button.addEventListener('click', addToCart);
-});
-
-document.querySelectorAll('.like').forEach(button => {
-    button.addEventListener('click', handleLike);
-});
-
-document.querySelectorAll('.dislike').forEach(button => {
-    button.addEventListener('click', handleDislike);
-});
-
-document.querySelectorAll('.add-comment').forEach(button => {
-    button.addEventListener('click', addComment);
-});
+// Sample product data for demonstration
+const products = [
+    {
+        name: "RX100",
+        description: "1995 Production.",
+        price: 85000,
+        image: "image.jpg",
+        likes: 0,
+        dislikes: 0,
+        comments: []
+    },
+    {
+        name: "iPhone 12",
+        description: "64GB, Great condition.",
+        price: 50000,
+        image: "image2.jpg",
+        likes: 0,
+        dislikes: 0,
+        comments: []
+    },
+    {
+        name: "Dell Laptop",
+        description: "15-inch, 8GB RAM.",
+        price: 40000,
+        image: "image3.jpg",
+        likes: 0,
+        dislikes: 0,
+        comments: []
+    }
+];
 
 let cartCount = 0;
 
-function addToCart(event) {
-    cartCount++;
-    document.getElementById('cart-count').innerText = cartCount;
-    alert('Product added to cart!');
-}
-
-function handleLike(event) {
-    const likeCountSpan = event.target.nextElementSibling;
-    let likeCount = parseInt(likeCountSpan.innerText);
-    likeCountSpan.innerText = ++likeCount;
-}
-
-function handleDislike(event) {
-    const dislikeCountSpan = event.target.nextElementSibling;
-    let dislikeCount = parseInt(dislikeCountSpan.innerText);
-    dislikeCountSpan.innerText = ++dislikeCount;
-}
-
-function addComment(event) {
-    const commentInput = event.target.previousElementSibling;
-    const commentText = commentInput.value;
-    if (commentText) {
-        const commentsDiv = event.target.closest('.product').querySelector('.comments');
-        const newComment = document.createElement('p');
-        newComment.innerText = commentText;
-        commentsDiv.appendChild(newComment);
-        commentInput.value = ''; // Clear input after adding
-    } else {
-        alert('Please enter a comment.');
-    }
-}
-
 function filterProducts() {
-    const searchInput = document.getElementById("search").value.toLowerCase();
-    const products = document.querySelectorAll(".product");
-    
+    const searchInput = document.getElementById('search').value.toLowerCase();
+    const productList = document.getElementById('productList');
+    productList.innerHTML = '';
+
     products.forEach(product => {
-        const productName = product.querySelector("h3").innerText.toLowerCase();
-        if (productName.includes(searchInput)) {
-            product.style.display = "block";
-        } else {
-            product.style.display = "none";
+        if (product.name.toLowerCase().includes(searchInput)) {
+            productList.appendChild(createProductElement(product));
         }
     });
 }
+
+function createProductElement(product) {
+    const productDiv = document.createElement('div');
+    productDiv.classList.add('product');
+
+    productDiv.innerHTML = `
+        <h3>${product.name}</h3>
+        <p>${product.description}</p>
+        <p>Price: <span class="price">₹${product.price}</span></p>
+        <img src="${product.image}" alt="Product Image" class="product-image" />
+        <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+        <button class="like" onclick="likeProduct('${product.name}')"><i class="fas fa-thumbs-up"></i> Like</button> 
+        <span class="like-count">${product.likes}</span>
+        <button class="dislike" onclick="dislikeProduct('${product.name}')"><i class="fas fa-thumbs-down"></i> Dislike</button> 
+        <span class="dislike-count">${product.dislikes}</span>
+        <div class="comment-section">
+            <input type="text" placeholder="Add a comment..." onkeypress="handleComment(event, '${product.name}')">
+            <button class="add-comment" onclick="handleCommentSubmit('${product.name}')">Comment</button>
+        </div>
+        <div class="comments">${product.comments.join('<br>')}</div>
+    `;
+
+    return productDiv;
+}
+
+function addToCart() {
+    cartCount++;
+    document.getElementById('cart-count').innerText = cartCount;
+}
+
+function likeProduct(productName) {
+    const product = products.find(p => p.name === productName);
+    if (product) {
+        product.likes++;
+        filterProducts(); // Re-render the products to update likes
+    }
+}
+
+function dislikeProduct(productName) {
+    const product = products.find(p => p.name === productName);
+    if (product) {
+        product.dislikes++;
+        filterProducts(); // Re-render the products to update dislikes
+    }
+}
+
+function handleComment(event, productName) {
+    if (event.key === 'Enter') {
+        handleCommentSubmit(productName);
+    }
+}
+
+function handleCommentSubmit(productName) {
+    const commentInput = event.target.previousElementSibling; // Get the input field
+    const commentText = commentInput.value.trim();
+    
+    if (commentText) {
+        const product = products.find(p => p.name === productName);
+        if (product) {
+            product.comments.push(commentText);
+            commentInput.value = ''; // Clear the input
+            filterProducts(); // Re-render products to show new comment
+        }
+    }
+}
+
+// Initial render
+filterProducts();
