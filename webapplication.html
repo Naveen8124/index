@@ -6,15 +6,95 @@
     <title>BUY & SELL USED PRODUCTS - Buy & Sell</title>
     <link rel="stylesheet" href="webapplication.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 20px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        #search {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #productList {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .product {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            width: calc(33% - 20px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        .product:hover {
+            transform: scale(1.05);
+        }
+        .product-image {
+            max-width: 100%;
+            height: auto;
+        }
+        .add-to-cart, .add-comment, .like, .dislike {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 5px 0;
+        }
+        .add-to-cart:hover, .add-comment:hover, .like:hover, .dislike:hover {
+            background-color: #45a049;
+        }
+        .comment-section {
+            margin-top: 10px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>BUY & SELL 
-          Used Products</h1>
+        <h1>BUY & SELL Used Products</h1>
         <nav>
             <a href="index.html">CARS</a>
             <a href="login.html">BIKES</a>
-            <a href="register.html">RegisterMOBILES</a>
+            <a href="register.html">MOBILES</a>
             <a href="create-listing.html">LAPTOPS</a>
             <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
         </nav>
@@ -25,12 +105,41 @@
         <input type="text" id="search" placeholder="Search products..." onkeyup="filterProducts()" />
 
         <div id="productList">
-            <!-- Example product listing -->
+            <!-- Example product listings -->
             <div class="product">
                 <h3>RX100</h3>
                 <p>1995 Production.</p>
                 <p>Price: <span class="price">₹85,000</span></p>
                 <img src="image.jpg" alt="Product Image" class="product-image" />
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="like"><i class="fas fa-thumbs-up"></i> Like</button> <span class="like-count">0</span>
+                <button class="dislike"><i class="fas fa-thumbs-down"></i> Dislike</button> <span class="dislike-count">0</span>
+                <div class="comment-section">
+                    <input type="text" placeholder="Add a comment...">
+                    <button class="add-comment">Comment</button>
+                </div>
+                <div class="comments"></div>
+            </div>
+            <!-- Additional product listings -->
+            <div class="product">
+                <h3>iPhone 12</h3>
+                <p>64GB, Great condition.</p>
+                <p>Price: <span class="price">₹50,000</span></p>
+                <img src="image2.jpg" alt="Product Image" class="product-image" />
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="like"><i class="fas fa-thumbs-up"></i> Like</button> <span class="like-count">0</span>
+                <button class="dislike"><i class="fas fa-thumbs-down"></i> Dislike</button> <span class="dislike-count">0</span>
+                <div class="comment-section">
+                    <input type="text" placeholder="Add a comment...">
+                    <button class="add-comment">Comment</button>
+                </div>
+                <div class="comments"></div>
+            </div>
+            <div class="product">
+                <h3>Dell Laptop</h3>
+                <p>15-inch, 8GB RAM.</p>
+                <p>Price: <span class="price">₹40,000</span></p>
+                <img src="image3.jpg" alt="Product Image" class="product-image" />
                 <button class="add-to-cart">Add to Cart</button>
                 <button class="like"><i class="fas fa-thumbs-up"></i> Like</button> <span class="like-count">0</span>
                 <button class="dislike"><i class="fas fa-thumbs-down"></i> Dislike</button> <span class="dislike-count">0</span>
